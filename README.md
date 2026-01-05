@@ -41,6 +41,9 @@ Always read through webpages and scripts before you open them as you are handlin
 
 ## Alternatives
 
+> I have no affilliation with these tools but they may be helpful. As always, check the code before running anything as you are dealing with very sensitive data (your passwords).
+
+- [Bitwarden-Dedupe-Tool](https://github.com/bcalmkid/Bitwarden-Dedupe-Tool)
 - [Bitwarden-Vault-Cleaner](https://github.com/qyqsoft/Bitwarden-Vault-Cleaner)
 - [bitwarden_duplicate_cleaner.py](https://gist.github.com/jwmcgettigan/0bf7cd39947764896735997056ca74d7)
 - [bitwarden-deduplicate](https://gitlab.com/sundbp/bitwarden-deduplicate)
