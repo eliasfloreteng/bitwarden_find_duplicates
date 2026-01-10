@@ -48,6 +48,8 @@ Always read through webpages and scripts before you open them as you are handlin
 - [bitwarden_duplicate_cleaner.py](https://gist.github.com/jwmcgettigan/0bf7cd39947764896735997056ca74d7)
 - [bitwarden-deduplicate](https://gitlab.com/sundbp/bitwarden-deduplicate)
 - [bwclean2.py](https://gist.github.com/serif/a1281c676cf5a1f77af6ff1a25255a85)
+- [Duplicate Password Remover for Bitwarden](https://hwrrobotics.com/2020/11/02/duplicate-password-remover-for-bitwarden/)
+- [bitwarden deduplicate import](https://gist.github.com/giabao/f4c3de705f1d7f2c1fd0cde02e7b841d)
 
 ## Discussions
 
