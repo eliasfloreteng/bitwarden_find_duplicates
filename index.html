@@ -182,7 +182,7 @@
                                       item.login.password
                                     }</div>
                                     <div class="text-xs text-gray-400 text-ellipsis overflow-hidden break-all">URIs: ${item.login.uris
-                                      .map((uri) => uri.uri)
+                                      .map((uri) => '<a href="' + uri.uri + '">' + uri.uri + '</a>')
                                       .join(", ")}</div>
                                 </div>
                                 <button class="delete-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded text-sm" data-id="${
