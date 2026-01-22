@@ -170,7 +170,7 @@
                             (item) => `
                             <li class="flex items-center justify-between ${
                               deletedItems.has(item.id) ? "opacity-50" : ""
-                            }">
+                            }" data-id="${item.id}">
                                 <div class="flex flex-col gap-2">
                                     <div class="text-gray-600">${
                                       item.name
@@ -234,6 +234,42 @@
         })
       }
 
+      function autoDeduplicate(groups) {
+        const duplicateItems = []; // Track duplicate item IDs
+
+        Object.values(groups).forEach((items) => {
+            let seenEntries = []; // Track unique (name, password) pairs
+
+            items.forEach((item) => {
+                if (item.login && item.login.password && item.login.username) {
+                    const key = `${item.login.username}::${item.login.password}`; // Unique key combining name and password
+                    
+                    if (seenEntries.includes(key)) {
+                        duplicateItems.push(item.id); // Mark as duplicate
+                        deletedItems.add(item.id); // Automatically delete duplicates
+                    } else {
+                        seenEntries.push(key); // Store first occurrence
+                    }
+                }
+            });
+        });
+
+        // Apply yellow border to duplicates
+        setTimeout(() => {
+            document.querySelectorAll(".duplicate-item").forEach((el) => {
+                el.classList.remove("duplicate-item");
+            });
+
+            duplicateItems.forEach((id) => {
+                document
+                    .querySelectorAll(`li[data-id="${id}"]`)
+                    .forEach((li) => li.classList.add("border-2", "border-yellow-500", "duplicate-item"));
+            });
+        }, 100);
+    }
+
+
+
       function handleFileSelect(event) {
         const file = event.target.files[0]
         if (file) {
@@ -241,8 +277,9 @@
           const reader = new FileReader()
           reader.onload = (e) => {
             try {
-              originalData = JSON.parse(e.target.result)
-              const groups = groupPasswords(originalData)
+              originalData = JSON.parse(e.target.result);
+              const groups = groupPasswords(originalData);
+              autoDeduplicate(groups); // Run deduplication after grouping
               displayResults(groups)
               document.getElementById("downloadBtn").style.display = "flex"
             } catch (error) {
