@@ -133,6 +133,17 @@
         return groups
       }
 
+      function getFolderName(item) {
+        if (!item.folderId || !originalData || !Array.isArray(originalData.folders)) {
+          return "Unassigned"
+        }
+
+        const folder = originalData.folders.find(
+          (folder) => folder.id === item.folderId
+        )
+        return folder ? folder.name : "Unassigned"
+      }
+
       function displayResults(groups) {
         const resultsDiv = document.getElementById("results")
         resultsDiv.innerHTML = ""
@@ -175,6 +186,9 @@
                                     <div class="text-gray-600">${
                                       item.name
                                     }</div>
+                                    <div class="text-sm text-gray-400">Folder: ${getFolderName(
+                                      item
+                                    )}</div>
                                     <div class="text-sm text-gray-400">${
                                       item.login.username
                                     }</div>
